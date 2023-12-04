@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="login-link">
+            <div class="logo">
+                <img src="image3.png" width="80px" height="50px">
+                <div class="logokanan">
+                    <img src="image7.png" width="65px" height="50px">
+                </div>
+            </div>
+            <p class="side-big-heading">Welcome to <b>JiwaCash</b></p>
+            <p class="side-smaller-heading">Create Your Account!</p>
+            <a href="index.html" class="loginbtn"><b>Register</b></a>
+        </div>
+        <form action="dasbor.png" class="form" onsubmit="handleDasborSubmission(event)">
+            <h1 class="text-center">Login Form</h1>
+            <!-- Steps -->
+            <div class="form-step form-step-active">
+              <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username"/>
+              </div>
+              <div class="input-group">
+                  <label for="password">Password</label>
+                  <input type="password" name="password" id="password" placeholder="Password"/>
+                </div>
+                  <div class="btns-group">
+                      <input type="submit" value="Submit" class="btn" onsubmit="handleDasborSubmission(event)"/>
+                    </div>
+                </div>
+          </form>
+    </div>
+</body>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js">
+    function handleLoginFormSubmission(event) {
+        event.preventDefault(); 
+        window.location.href = "dasbor.png";
+    }
+</script>
+</html>

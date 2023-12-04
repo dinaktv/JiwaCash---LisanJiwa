@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration form</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="container">
+        <div class="login-link">
+            <div class="logo">
+                <img src="image3.png" width="80px" height="50px">
+                <div class="logokanan">
+                    <img src="image7.png" width="65px" height="50px">
+                </div>
+            </div>
+            <p class="side-big-heading">Welcome to <b>JiwaCash</b></p>
+            <p class="side-smaller-heading">Have an Account?</p>
+            <a href="login.html" class="loginbtn"><b>Login</b></a>
+        </div>
+        <form action="login.html" class="form" onsubmit="handleLoginFormSubmission(event)">
+            <h1 class="text-center">Registration Form</h1>
+            <!-- Progress bar -->
+            <div class="progressbar">
+              <div class="progress" id="progress"></div>
+              
+              <div
+                class="progress-step progress-step-active"
+                data-title="Personal"
+              ></div>
+              <div class="progress-step" data-title="Contact"></div>
+              <div class="progress-step" data-title="Detail"></div>
+              <div class="progress-step" data-title="Password"></div>
+              <div class="progress-step" data-title="Scan KTP"></div>
+            </div>
+      
+            <!-- Steps -->
+            <div class="form-step form-step-active">
+              <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" placeholder="Username"/>
+              </div>
+              <div class="input-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" name="fullname" id="fullname" placeholder="Full Name"/>
+              </div>
+              <div class="">
+                <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
+              </div>
+            </div>
+            <div class="form-step">
+              <div class="input-group">
+                <label for="phone">Phone</label>
+                <input type="text" name="phone" id="phone" placeholder="Phone Number"/>
+              </div>
+              <div class="input-group">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" placeholder="Email Address"/>
+              </div>
+              <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-next">Next</a>
+              </div>
+            </div>
+            <div class="form-step">
+              <div class="input-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" name="dob" id="dob" />
+              </div>
+              <div class="input-group">
+                  <label for="address">Address</label>
+                  <input type="text" name="address" id="address" placeholder="Address"/>
+              </div>
+              <div class="btns-group">
+                <a href="#" class="btn btn-prev">Previous</a>
+                <a href="#" class="btn btn-next">Next</a>
+              </div>
+            </div>
+            <div class="form-step">
+              <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password"/>
+              </div>
+              <div class="input-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="btns-group">
+                  <a href="#" class="btn btn-prev">Previous</a>
+                  <a href="#" class="btn btn-next">Next</a>
+                </div>
+            </div>
+              <div class="form-step">
+                  <div class="input-group">
+                    <label for="ktp-image"><i class='bx bx-camera'></i> Scan your KTP</label>
+                          <input type="file" name="ktp-image" id="ktp-image" accept="image/*" capture="camera">
+                  </div>
+                  <div class="btns-group">
+                      <a href="#" class="btn btn-prev">Previous</a>
+                      <input type="submit" value="Submit" class="btn" onsubmit="handleLoginFormSubmission(event)">
+                    </div>
+                </div>
+          </form>
+    </div>
+</body>
+<script>
+    const prevBtns = document.querySelectorAll(".btn-prev");
+const nextBtns = document.querySelectorAll(".btn-next");
+const progress = document.getElementById("progress");
+const formSteps = document.querySelectorAll(".form-step");
+const progressSteps = document.querySelectorAll(".progress-step");
+
+let formStepsNum = 0;
+
+nextBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum++;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+prevBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    formStepsNum--;
+    updateFormSteps();
+    updateProgressbar();
+  });
+});
+
+function updateFormSteps() {
+  formSteps.forEach((formStep) => {
+    formStep.classList.contains("form-step-active") &&
+      formStep.classList.remove("form-step-active");
+  });
+
+  formSteps[formStepsNum].classList.add("form-step-active");
+}
+
+function updateProgressbar() {
+  progressSteps.forEach((progressStep, idx) => {
+    if (idx < formStepsNum + 1) {
+      progressStep.classList.add("progress-step-active");
+    } else {
+      progressStep.classList.remove("progress-step-active");
+    }
+  });
+
+  const progressActive = document.querySelectorAll(".progress-step-active");
+
+  progress.style.width =
+    ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
+}
+
+function handleLoginFormSubmission(event) {
+    event.preventDefault(); 
+    window.location.href = "login.html";
+}
+</script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</html>

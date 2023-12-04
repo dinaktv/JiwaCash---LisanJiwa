@@ -184,7 +184,20 @@ label {
     border-radius: 0.35rem;
     padding: 1.5rem;
   }
+
+  .ceklis {
+    text-align: center;
+    justify-content: center;
+    text-align: center;
+    display: block;
+    padding-top: 10px 0 10px;
+    margin: 10px 0 10px;
+  }
   
+  .ceklis img{
+    width: 18%;
+  }
+
   .form-step {
     display: none;
     transform-origin: top;
